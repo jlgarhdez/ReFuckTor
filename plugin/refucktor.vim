@@ -11,7 +11,7 @@ function ExtractVariable() " ----------------------------------------------- {{{
 	
 	if &filetype == "php"
 
-		let nombre = input("nombre de la variable: ")
+		let nombre = input("name: ")
 		if nombre == ""
 			return
 		endif
@@ -23,7 +23,7 @@ function ExtractVariable() " ----------------------------------------------- {{{
 
 	elseif &filetype == "python"
 
-		let nombre = input("nombre de la variable: ")
+		let nombre = input("name: ")
 		if nombre == ""
 			return
 		endif
@@ -34,7 +34,7 @@ function ExtractVariable() " ----------------------------------------------- {{{
 
 	elseif &filetype == "javascript"
 
-		let nombre = input("nombre de la variable: ")
+		let nombre = input("name: ")
 		if nombre == ""
 			return
 		endif
@@ -52,5 +52,26 @@ function ExtractVariable() " ----------------------------------------------- {{{
 
 endfunction "}}}
 function ExtractToMethod() " ----------------------------------------------- {{{
+
+	" Only PHP support yet, if you have any idea for other lang, let me
+	" know at jl.garhdez@gmail.com
+	if &filetype == "php"
+
+		let nombre = input("name of the method: ")
+
+		if nombre == ""
+			call :echo "please enter a name"
+			return
+		endif
+
+		normal! gv
+		exec "normal! c". nombre . "();"
+		exec "normal! O" . "function " . nombre . "()"
+		exec "put='{'"
+		exec "put=''"
+		normal! $p
+		exec "put='}'"
+
+	endif
 
 endfunction " }}}
