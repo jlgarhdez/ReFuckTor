@@ -11,5 +11,3 @@ Install via Pathogen, plz!
 	cd ~/.vim
 	git submodule add https://github.com/jlgarhdez/ReFucktor.git bundle/refucktor
 	git submodule update
-
-_Hope this Helps_
