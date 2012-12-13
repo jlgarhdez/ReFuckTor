@@ -8,7 +8,7 @@ Yes, you guessed it. This plugins allows you to refactor in several languages,
 such as PHP, Python and Javascript. If you like to contribute, make changes and
 send me a pull request.
 
-Insallation
+Installation
 -----------
 Install via Pathogen, plz!
 
