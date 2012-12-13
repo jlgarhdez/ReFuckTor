@@ -1,0 +1,4 @@
+Refucktor,  a Vim plugin to help refactoring.
+
+This plugin still under active development and has only support for PHP, Javascript
+and Python.
