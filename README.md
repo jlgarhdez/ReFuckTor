@@ -18,9 +18,9 @@ Install via Pathogen, plz!
 
 Mappings
 --------
-The plugin itself creates 2 mappings:
+I suggest to add the following lines to your $MYVIMRC:
 
-	<leader>rv " Asks for the name and create a new variable with the selected
-	text
-	<leader>rm " Asks for the name and creates a new method with the selected
-	text
+```VimL
+vnoremap <leader>rv :call ExtractVariable()<cr>
+vnoremap <leader>rm :call ExtractToMethod()<cr>
+```
