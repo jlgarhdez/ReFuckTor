@@ -61,8 +61,6 @@ function ExtractToMethod() range " ----------------------------------------- {{{
 		'<
 		exe "normal! O\<BS>function " . name ."()\<CR>{\<Esc>"
 		'>
-		"exe "normal! oreturn ;\<CR>}\<Esc>k"
-		s/return/\/\/ return/ge
 		normal! j%
 		normal! kf(
 		exe "normal! yyPi// = \<Esc>wdwA;\<Esc>"
