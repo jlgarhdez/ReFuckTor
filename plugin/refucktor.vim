@@ -11,7 +11,7 @@ function ExtractVariable() " ----------------------------------------------- {{{
 	
 	if &filetype == "php"
 
-		let nombre = input("name: ")
+		let nombre = inputdialog("name: ")
 		if nombre == ""
 			return
 		endif
@@ -23,7 +23,7 @@ function ExtractVariable() " ----------------------------------------------- {{{
 
 	elseif &filetype == "python"
 
-		let nombre = input("name: ")
+		let nombre = inputdialog("name: ")
 		if nombre == ""
 			return
 		endif
@@ -34,7 +34,7 @@ function ExtractVariable() " ----------------------------------------------- {{{
 
 	elseif &filetype == "javascript"
 
-		let nombre = input("name: ")
+		let nombre = inputdialog("name: ")
 		if nombre == ""
 			return
 		endif
@@ -51,26 +51,24 @@ function ExtractVariable() " ----------------------------------------------- {{{
 	endif
 
 endfunction "}}}
-function ExtractToMethod() " ----------------------------------------------- {{{
+function ExtractToMethod() range " ----------------------------------------- {{{
 
 	" Only PHP support yet, if you have any idea for other lang, let me
 	" know at jl.garhdez@gmail.com
 	if &filetype == "php"
 
-		let nombre = input("name of the method: ")
-
-		if nombre == ""
-			call :echo "please enter a name"
-			return
-		endif
-
-		normal! gv
-		exec "normal! c". nombre . "();"
-		exec "normal! O" . "function " . nombre . "()"
-		exec "put='{'"
-		exec "put=''"
-		normal! $p
-		exec "put='}'"
+		let name = inputdialog("Name of method:")
+		'<
+		exe "normal! O\<BS>function " . name ."()\<CR>{\<Esc>"
+		'>
+		"exe "normal! oreturn ;\<CR>}\<Esc>k"
+		s/return/\/\/ return/ge
+		normal! j%
+		normal! kf(
+		exe "normal! yyPi// = \<Esc>wdwA;\<Esc>"
+		normal! ==
+		normal! j0w
+		return
 
 	endif
 
